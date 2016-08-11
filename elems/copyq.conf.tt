@@ -1,0 +1,234 @@
+# ─────────────────────────────────────────────────────────────────────────────┐
+#                                                                              │
+# Name:    elems/copyq.conf.tt                                                 │
+# Summary: Configure CopyQ.                                                    │
+#                                                                              │
+# Authors:                                                                     │
+#   - Alessandro Molari <molari.alessandro@gmail.com> (alem0lars)              │
+#                                                                              │
+# Project:                                                                     │
+#   - Homepage:        https://github.com/alem0lars/configs-copyq              │
+#   - Getting started: see README.md in the project root folder                │
+#                                                                              │
+# License: Apache v2.0 (see below)                                             │
+#                                                                              │
+# ─────────────────────────────────────────────────────────────────────────────┤
+#                                                                              │
+# Licensed to the Apache Software Foundation (ASF) under one more contributor  │
+# license agreements.  See the NOTICE file distributed with this work for      │
+# additional information regarding copyright ownership. The ASF licenses this  │
+# file to you under the Apache License, Version 2.0 (the "License"); you may   │
+# not use this file except in compliance with the License.                     │
+# You may obtain a copy of the License at                                      │
+#                                                                              │
+#   http://www.apache.org/licenses/LICENSE-2.0                                 │
+#                                                                              │
+# Unless required by applicable law or agreed to in writing, software          │
+# distributed under the License is distributed on an "AS IS" BASIS, WITHOUT    │
+# WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.             │
+# See the License for the specific language governing permissions and          │
+# limitations under the License.                                               │
+#                                                                              │
+# ─────────────────────────────────────────────────────────────────────────────┤
+<% define_locals do
+  prefixed(:"copyq.") do
+    variable :shortcut,   type: :string
+    variable :editor_cmd, type: :string
+
+    variable :"fonts.main.name",  type: :string, as: :main_font_name
+    variable :"fonts.main.size",  type: :string, as: :main_font_size
+    variable :"fonts.edit.name",  type: :string, as: :edit_font_name
+    variable :"fonts.edit.size",  type: :string, as: :edit_font_size
+    variable :"fonts.find.name",  type: :string, as: :find_font_name
+    variable :"fonts.find.size",  type: :string, as: :find_font_size
+    variable :"fonts.notes.name", type: :string, as: :notes_font_name
+    variable :"fonts.notes.size", type: :string, as: :notes_font_size
+    variable :"fonts.num.name",   type: :string, as: :num_font_name
+    variable :"fonts.num.size",   type: :string, as: :num_font_size
+  end
+end -%>
+# ─────────────────────────────────────────────────────────────────────────────┘
+
+
+[General]
+plugin_priority=itemimage, itemfakevim, itemencrypted, itemdata, itemnotes, itemtext, itemtags, itemsync
+
+[Options]
+action_has_input=false
+action_has_output=false
+action_output_tab=
+action_separator=\\n
+activate_closes=true
+activate_focuses=false
+activate_pastes=false
+always_on_top=true
+autostart=false
+check_clipboard=true
+check_selection=false
+clipboard_notification_lines=0
+clipboard_tab=&clipboard
+command_history_size=100
+confirm_exit=true
+copy_clipboard=false
+copy_selection=false
+disable_tray=false
+edit_ctrl_return=true
+editor=<%= local! :editor_cmd %>
+expire_tab=0
+hide_main_window=false
+hide_tabs=false
+hide_toolbar=false
+hide_toolbar_labels=true
+item_popup_interval=0
+language=en
+maxitems=4096
+move=true
+notification_horizontal_offset=10
+notification_maximum_height=100
+notification_maximum_width=300
+notification_position=3
+notification_vertical_offset=10
+open_windows_on_current_screen=true
+save_filter_history=true
+show_tab_item_count=true
+tab_tree=true
+text_wrap=true
+transparency=20
+transparency_focused=0
+tray_commands=true
+tray_images=true
+tray_item_paste=true
+tray_items=16
+tray_tab=
+tray_tab_is_current=true
+vi=true
+
+[Plugins]
+
+itemdata\enabled=true
+itemencrypted\enabled=true
+itemfakevim\enabled=true
+itemimage\enabled=true
+itemimage\image_editor=
+itemimage\max_image_height=240
+itemimage\max_image_width=320
+itemimage\svg_editor=
+itemnotes\enabled=true
+itemsync\enabled=true
+itemtags\enabled=true
+itemtext\enabled=true
+itemencrypted\encrypt_tabs=
+itemfakevim\really_enable=true
+itemfakevim\source_file=
+itemdata\formats=text/uri-list, text/xml
+itemdata\max_bytes=256
+itemnotes\icon_only=false
+itemnotes\notes_at_bottom=false
+itemnotes\show_tooltip=false
+itemsync\format_settings=@Invalid()
+itemsync\sync_tabs=@Invalid()
+itemtags\tags=@Invalid()
+itemtext\max_height=0
+itemtext\max_lines=0
+itemtext\use_rich_text=true
+
+[Shortcuts]
+
+change_tab_icon=ctrl+shift+t
+commands=f6
+copy_selected_items=ctrl+c
+delete_item=del
+edit=f2
+edit_notes=shift+f2
+editor=ctrl+e
+exit=ctrl+q
+export_tab=ctrl+s
+find_items=f3
+format-next=ctrl+right
+format-previous=ctrl+left
+help=f1
+import_tab=ctrl+i
+move_down=ctrl+down
+move_to_bottom=ctrl+end
+move_to_clipboard=
+move_to_top=ctrl+home
+move_up=ctrl+up
+new=ctrl+n
+new_tab=ctrl+t
+next_tab=right
+paste_selected_items=ctrl+v
+preferences=ctrl+p
+previous_tab=left
+process_manager=ctrl+shift+z
+remove_tab=ctrl+w
+rename_tab=ctrl+f2
+reverse_selected_items=ctrl+shift+r
+show-log=f12
+show_clipboard_content=
+show_item_content=f4
+sort_selected_items=ctrl+shift+s
+system-run=f5
+toggle_clipboard_storing=ctrl+shift+x
+
+[Theme]
+
+alt_bg=#383838
+alt_item_css=
+bg=#4b4b4b
+css=
+cur_item_css="\n    ;border: 0.1em solid ${sel_bg}"
+edit_bg=#ffffff
+edit_fg=#1a1a1a
+edit_font="<%= local! :edit_font_name %>,<%= local! :edit_font_size %>,-1,5,50,0,0,0,0,0"
+fg=#dfdfdf
+find_bg=#00689c
+find_fg=#ffffff
+find_font="<%= local! :find_font_name %>,<%= local! :find_font_size %>,-1,5,50,0,0,0,0,0"
+font="<%= local! :main_font_name %>,<%= local! :main_font_size %>,-1,5,50,0,0,0,0,0"
+font_antialiasing=true
+item_css=
+item_spacing=
+menu_bar_css="\n    ;background: ${bg}\n    ;color: ${fg}"
+menu_bar_disabled_css="\n    ;color: ${bg - #666}"
+menu_bar_selected_css="\n    ;background: ${sel_bg}\n    ;color: ${sel_fg}"
+menu_css="\n    ;border-top: 0.08em solid ${bg + #333}\n    ;border-left: 0.08em solid ${bg + #333}\n    ;border-bottom: 0.08em solid ${bg - #333}\n    ;border-right: 0.08em solid ${bg - #333}"
+notes_bg=#ffffff
+notes_css=
+notes_fg=#232323
+notes_font="<%= local! :notes_font_name %>,<%= local! :notes_font_size %>,-1,5,50,0,0,0,0,0"
+notification_bg=#333
+notification_fg=#ddd
+notification_font=
+num_fg=#7f7f7f
+num_font="<%= local! :num_font_name %>,<%= local! :num_font_name %>,-1,5,25,0,0,0,0,0"
+search_bar="\n    ;background: ${edit_bg}\n    ;color: ${edit_fg}\n    ;border: 1px solid ${alt_bg}\n    ;margin: 2px"
+search_bar_focused="\n    ;border: 1px solid ${sel_bg}"
+sel_bg=#61819c
+sel_fg=#ffffff
+sel_item_css=
+show_number=true
+show_scrollbars=true
+style_main_window=false
+tab_bar_css="\n    ;background: ${bg - #222}"
+tab_bar_item_counter="\n    ;color: ${fg - #044 + #400}\n    ;font-size: 6pt"
+tab_bar_scroll_buttons_css="\n    ;background: ${bg - #222}\n    ;color: ${fg}\n    ;border: 0"
+tab_bar_sel_item_counter="\n    ;color: ${sel_bg - #044 + #400}"
+tab_bar_tab_selected_css="\n    ;padding: 0.5em\n    ;background: ${bg}\n    ;border: 0.05em solid ${bg}\n    ;color: ${fg}"
+tab_bar_tab_unselected_css="\n    ;border: 0.05em solid ${bg}\n    ;padding: 0.5em\n    ;background: ${bg - #222}\n    ;color: ${fg - #333}"
+tab_tree_css="\n    ;color: ${fg}\n    ;background-color: ${bg}"
+tab_tree_item_counter="\n    ;color: ${fg - #044 + #400}\n    ;font-size: 6pt"
+tab_tree_sel_item_counter="\n    ;color: ${sel_fg - #044 + #400}"
+tab_tree_sel_item_css="\n    ;color: ${sel_fg}\n    ;background-color: ${sel_bg}\n    ;border-radius: 2px"
+tool_bar_css="\n    ;color: ${fg}\n    ;background-color: ${bg}\n    ;border: 0"
+tool_button_css="\n    ;background-color: transparent"
+use_system_icons=false
+
+[Command]
+
+Command=copyq: toggle()
+GlobalShortcut=<%= local! :shortcut %>
+Icon=\xf022
+Name=Show/hide main window
+
+
+# vim: set filetype=eruby.dosini :

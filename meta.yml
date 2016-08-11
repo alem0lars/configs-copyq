@@ -1,0 +1,10 @@
+elems:
+
+  - src: elems/(.+)$
+    dst: ~/.config/copyq/<1>
+    only:
+      features:
+        - copyq
+
+
+# vim: set filetype=eruby.yaml :
