@@ -1,7 +1,7 @@
 # => inherits: generic <= #
 
 
-copy:
+copyq:
   editor_cmd: 'openterm --without-tmux --cmd \"nvim %1\"'
   shortcut: meta+ctrl+c
   fonts:
