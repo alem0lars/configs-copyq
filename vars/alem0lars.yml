@@ -2,7 +2,7 @@
 
 
 copyq:
-  editor_cmd: 'openterm --without-tmux --cmd \"nvim %1\"'
+  editor_cmd: 'openterm --without-tmux --cmd \"${EDITOR} %1\"'
   shortcut: meta+ctrl+c
   fonts:
     main:
