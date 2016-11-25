@@ -1,0 +1,20 @@
+copyq:
+  fonts:
+    main:
+      name: Hack
+      size: 10
+    num:
+      name: Hack
+      size: 8
+    notes:
+      name: Hack
+      size: 11
+    find:
+      name: Hack
+      size: 10
+    edit:
+      name: Hack
+      size: 11
+      
+      
+# vim: set filetype=eruby.yaml :
