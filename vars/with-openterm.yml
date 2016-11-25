@@ -1,5 +1,5 @@
 copyq:
-  editor_cmd: 'openterm --without-tmux --cmd \"${EDITOR} %1\"'
+  editor_cmd: 'openterm --no-tmux --cmd \"${EDITOR} %1\"'
   
   
 # vim: set filetype=eruby.yaml :
