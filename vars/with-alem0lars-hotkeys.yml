@@ -1,0 +1,5 @@
+copyq:
+  shortcut: meta+ctrl+c
+  
+  
+# vim: set filetype=eruby.yaml :
